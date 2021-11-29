@@ -46,16 +46,24 @@ $posts = [
     ],
 ];
 
-// Ottengo le chiavi d'array associativo $posts
+// Ottengo un'array contenente le chiavi dell'array associativo $posts (quindi le date) .. Procedo in questo modo poichè l'array non ha un indice numerico, ma al suo posto ci sono le date.
+
 $keyPosts = array_keys($posts);
+var_dump($keyPosts);
+
+
 
 for ($i = 0; $i < count($keyPosts); $i++) {
 
-    $valueSinglePost = $keyPosts[$i];
+    // Prendo le singole chiavi
+    $data = $keyPosts[$i];
+    // Prendo gli array presenti in posts[$data] ($data contiene le diverse date)
+    $elemento = $posts[$data];
 
-    $result = $valueSinglePost["title"] . " - " . $valueSinglePost["author"] . " - " . $valueSinglePost["text"];
-    
-    echo $result;
+    for($x = 0; $x < count($elemento); $x++) {
+        // Stampo i singoli elementi in posizione [x][chiave] (x viene incrementata ad ogni ciclo)
+        echo $elemento[$x]["title"];
+    }
 
 }
 
